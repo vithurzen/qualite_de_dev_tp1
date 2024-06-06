@@ -1,8 +1,7 @@
 package vithurzen;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import javax.annotation.processing.SupportedAnnotationTypes;
 
 public class VoitureTest {
 

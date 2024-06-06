@@ -22,7 +22,8 @@ public class Voiture {
         prix = newPrix;
     }
 
-    public String toString() {
+    public String toString()
+    {
         return "marque: " + getMarque() + " prix: " + getPrix();
     }
 
