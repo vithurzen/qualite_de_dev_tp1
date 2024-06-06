@@ -1,10 +1,7 @@
-package java.vithurzen;
+package vithurzen;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-
-import java.vithurzen.Voiture;
+import javax.annotation.processing.SupportedAnnotationTypes;
 
 public class VoitureTest {
 

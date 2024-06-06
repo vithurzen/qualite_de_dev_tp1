@@ -1,4 +1,4 @@
-package java.vithurzen;
+package vithurzen;
 
 public class Voiture {
 

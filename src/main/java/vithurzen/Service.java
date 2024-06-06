@@ -1,4 +1,4 @@
-package java.vithurzen;
+package vithurzen;
 import java.util.ArrayList;
 
 public class Service implements Statistique {
@@ -15,7 +15,7 @@ public class Service implements Statistique {
             for (int i = tailleVoiture; i > tailleVoiture - 4; i--) {
                 int reduction = voitures.get(i).getPrix()-(5/100);
                 int prixReduction = voitures.get(i).getPrix();
-                System.out.println(prixReduction.setPrix(reduction););
+
             }
         }
         return 0;

@@ -1,7 +1,7 @@
-package java.vithurzen;
+package vithurzen;
 
-import java.vithurzen.Service;
-import java.vithurzen.Voiture;
+import vithurzen.Service;
+import vithurzen.Voiture;
 
 public class ServiceTest {
     public static void testService() {
@@ -26,7 +26,5 @@ public class ServiceTest {
 
     };
 
-    public static void main(String[] args) {
-        testService();
-    }
+
 }
