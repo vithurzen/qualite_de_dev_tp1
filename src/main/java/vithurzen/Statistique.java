@@ -1,4 +1,4 @@
-package vithurzen;
+package java.vithurzen;
 
 public interface Statistique {
 
