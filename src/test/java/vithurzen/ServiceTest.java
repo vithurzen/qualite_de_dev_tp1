@@ -22,7 +22,7 @@ public class ServiceTest {
         voiture4 = new Voiture("polo2", 55000);
         service.ajouter(voiture4);
         Voiture voiture5;
-        voiture5 = new Voiture("golf2", 65000);
+        voiture5 = new Voiture("golf2", 650000);
         service.ajouter(voiture5);
         service.prix();
 

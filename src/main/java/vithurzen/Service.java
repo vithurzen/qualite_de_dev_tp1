@@ -13,9 +13,15 @@ public class Service implements Statistique {
         if (voitures.size() % 5 == 0) {
             int tailleVoiture = voitures.size() - 1;
             for (int i = tailleVoiture; i > tailleVoiture - 5; i--) {
-                int prixReduction = voitures.get(i).getPrix();
-                int reduction = prixReduction - prixReduction * 5/100;
-                voitures.get(i).setPrix(reduction);
+                int prix = voitures.get(i).getPrix();
+                if (prix * 5/100 > 20000) {
+                    int prixReduction = prix - 20000;
+                    voitures.get(i).setPrix(prixReduction);
+                }
+                else {
+                    int prixReduction = prix - prix * 5/100;
+                    voitures.get(i).setPrix(prixReduction);
+                }
                 int newPrix = voitures.get(i).getPrix();
                 System.out.println(newPrix);
 
