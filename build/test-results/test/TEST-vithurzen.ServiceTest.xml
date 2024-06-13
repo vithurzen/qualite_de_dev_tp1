@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="vithurzen.ServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-13T09:43:10" hostname="LAPTOP-K9OT17MS" time="0.046">
+  <properties/>
+  <testcase name="testService()" classname="vithurzen.ServiceTest" time="0.046"/>
+  <system-out><![CDATA[630000
+52250
+42750
+33250
+23750
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
