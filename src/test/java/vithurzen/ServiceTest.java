@@ -6,12 +6,14 @@ import vithurzen.Service;
 import vithurzen.Voiture;
 
 public class ServiceTest {
-    public static void testService() {
+    @Test
+    public void testService() {
 
         Service service = new Service();
         Voiture voiture1;
         voiture1 = new Voiture("polo", 25000);
         service.ajouter(voiture1);
+        assertTrue(service.voitures.contains(voiture1), voiture1.toString());
         Voiture voiture2;
         voiture2 = new Voiture("golf", 35000);
         service.ajouter(voiture2);
@@ -27,12 +29,5 @@ public class ServiceTest {
         service.prix();
 
     };
-
-
-    public static void main(String[] args){
-
-        testService();
-
-    }
 
 }
