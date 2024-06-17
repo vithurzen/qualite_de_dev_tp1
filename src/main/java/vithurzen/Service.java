@@ -1,33 +1,43 @@
 package vithurzen;
-import java.util.ArrayList;
+import java.util.*;
+import java.lang.*;
 
 public class Service implements Statistique {
-    public ArrayList<Voiture> voitures = new ArrayList<Voiture>();
+    ArrayList<Voiture> voitures;
 
+    public Service() {
+        voitures = new ArrayList<Voiture>();
+    }
+
+    @Override
     public void ajouter(Voiture voiture) {
         voitures.add(voiture);
     }
 
+
+    public List<Voiture> getVoitures() {
+        return voitures;
+    }
+    @Override
     public int prix() throws ArithmeticException {
+        if (voitures.isEmpty()) {
+            throw new ArithmeticException("La liste des voitures est vide");
+        }
 
-        if (voitures.size() % 5 == 0) {
-            int tailleVoiture = voitures.size() - 1;
-            for (int i = tailleVoiture; i > tailleVoiture - 5; i--) {
-                int prix = voitures.get(i).getPrix();
-                if (prix * 5/100 > 20000) {
-                    int prixReduction = prix - 20000;
-                    voitures.get(i).setPrix(prixReduction);
+        if (voitures.size() >= 5) {
+            for (int j = voitures.size() - 5; j < voitures.size(); j++) {
+                Voiture voiture = voitures.get(j);
+                int prix = voiture.getPrix();
+                double remise = prix * 0.05; // Calculer la remise
+                if (remise > 20000) {
+                    remise = 20000;
                 }
-                else {
-                    int prixReduction = prix - prix * 5/100;
-                    voitures.get(i).setPrix(prixReduction);
-                }
-                int newPrix = voitures.get(i).getPrix();
-                System.out.println(newPrix);
-
+                int remiseInt = (int) remise;
+                voiture.setPrix(prix - remiseInt);
             }
         }
-        return 0;
-    }
-}
 
+        return voitures.get(voitures.size() - 1).getPrix();
+    }
+
+}
