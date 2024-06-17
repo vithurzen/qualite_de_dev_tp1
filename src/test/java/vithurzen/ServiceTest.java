@@ -2,32 +2,53 @@ package vithurzen;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import vithurzen.Service;
-import vithurzen.Voiture;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ServiceTest {
+    Service s1;
+
+    @BeforeEach
+    void setUp() {
+        s1 = new Service();
+    }
+
     @Test
-    public void testService() {
+    public void testAjouter() {
+        Voiture voiture = new Voiture("Renault",10000);
+        s1.ajouter(voiture);
+        Assertions.assertEquals(1, s1.voitures.size());
+    }
+    @Test
+    public void testPrix() {
+        Service s1 = new Service();
+        s1.ajouter(new Voiture("Renault", 10000));
+        s1.ajouter(new Voiture("Peugeot", 15000));
+        s1.ajouter(new Voiture("Lamborghini", 20000));
+        s1.ajouter(new Voiture("BMW", 25000));
+        s1.ajouter(new Voiture("Mercedes", 5000000));
 
-        Service service = new Service();
-        Voiture voiture1;
-        voiture1 = new Voiture("polo", 25000);
-        service.ajouter(voiture1);
-        assertTrue(service.voitures.contains(voiture1), voiture1.toString());
-        Voiture voiture2;
-        voiture2 = new Voiture("golf", 35000);
-        service.ajouter(voiture2);
-        Voiture voiture3;
-        voiture3 = new Voiture("passat", 45000);
-        service.ajouter(voiture3);
-        Voiture voiture4;
-        voiture4 = new Voiture("polo2", 55000);
-        service.ajouter(voiture4);
-        Voiture voiture5;
-        voiture5 = new Voiture("golf2", 650000);
-        service.ajouter(voiture5);
-        service.prix();
+        int dernierPrix = s1.prix();
+        // Vérifier que le prix de la Mercedes après remise est correct
+        int expectedPriceMercedes = 5000000 - 20000;
+        Assertions.assertEquals(expectedPriceMercedes, s1.getVoitures().get(4).getPrix(), "Le prix de la Mercedes après remise doit être de 4980000");
+        // Vérifier le dernier prix (celui de la Mercedes)
+        Assertions.assertEquals(expectedPriceMercedes, dernierPrix, "Le prix de la dernière voiture doit être de 4980000");
+    }
+    @Test
+    public void testPrixIfNul() {
+        Service s1 = new Service();
+        ArithmeticException thrown = Assertions.assertThrows(ArithmeticException.class, s1::prix, "La liste des voitures est vide");
+        Assertions.assertEquals("La liste des voitures est vide", thrown.getMessage());
+    }
 
-    };
+    @Test
+    public void testPrixIfInferieurA5() {
+        Service s1 = new Service();
+        s1.ajouter(new Voiture("Renault", 10000));
+        int dernierPrix = s1.prix();
+        Assertions.assertEquals(10000, dernierPrix, "Le prix de la voiture doit rester inchangé à 10000");
+    }
 
 }

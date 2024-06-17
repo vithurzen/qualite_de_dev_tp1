@@ -12,5 +12,8 @@ public class VoitureTest {
 
         assertEquals("marque: CyberTruck prix: 25000", voiture.toString());
 
+        voiture.setMarque("Telsa");
+        assertEquals("marque: Telsa prix: 25000", voiture.toString());
+
     }
 }

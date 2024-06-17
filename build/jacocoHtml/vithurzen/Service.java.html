@@ -1,34 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Service.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">vithurzen</a> &gt; <span class="el_source">Service.java</span></div><h1>Service.java</h1><pre class="source lang-java linenums">package vithurzen;
-import java.util.ArrayList;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Service.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">vithurzen</a> &gt; <span class="el_source">Service.java</span></div><h1>Service.java</h1><pre class="source lang-java linenums">package vithurzen;
+import java.util.*;
+import java.lang.*;
 
-<span class="fc" id="L4">public class Service implements Statistique {</span>
-<span class="fc" id="L5">    public ArrayList&lt;Voiture&gt; voitures = new ArrayList&lt;Voiture&gt;();</span>
+public class Service implements Statistique {
+    ArrayList&lt;Voiture&gt; voitures;
 
+<span class="fc" id="L8">    public Service() {</span>
+<span class="fc" id="L9">        voitures = new ArrayList&lt;Voiture&gt;();</span>
+<span class="fc" id="L10">    }</span>
+
+    @Override
     public void ajouter(Voiture voiture) {
-<span class="fc" id="L8">        voitures.add(voiture);</span>
-<span class="fc" id="L9">    }</span>
+<span class="fc" id="L14">        voitures.add(voiture);</span>
+<span class="fc" id="L15">    }</span>
 
+
+    public List&lt;Voiture&gt; getVoitures() {
+<span class="fc" id="L19">        return voitures;</span>
+    }
+    @Override
     public int prix() throws ArithmeticException {
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (voitures.isEmpty()) {</span>
+<span class="fc" id="L24">            throw new ArithmeticException(&quot;La liste des voitures est vide&quot;);</span>
+        }
 
-<span class="pc bpc" id="L13" title="1 of 2 branches missed.">        if (voitures.size() % 5 == 0) {</span>
-<span class="fc" id="L14">            int tailleVoiture = voitures.size() - 1;</span>
-<span class="fc bfc" id="L15" title="All 2 branches covered.">            for (int i = tailleVoiture; i &gt; tailleVoiture - 5; i--) {</span>
-<span class="fc" id="L16">                int prix = voitures.get(i).getPrix();</span>
-<span class="fc bfc" id="L17" title="All 2 branches covered.">                if (prix * 5/100 &gt; 20000) {</span>
-<span class="fc" id="L18">                    int prixReduction = prix - 20000;</span>
-<span class="fc" id="L19">                    voitures.get(i).setPrix(prixReduction);</span>
-<span class="fc" id="L20">                }</span>
-                else {
-<span class="fc" id="L22">                    int prixReduction = prix - prix * 5/100;</span>
-<span class="fc" id="L23">                    voitures.get(i).setPrix(prixReduction);</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (voitures.size() &gt;= 5) {</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            for (int j = voitures.size() - 5; j &lt; voitures.size(); j++) {</span>
+<span class="fc" id="L29">                Voiture voiture = voitures.get(j);</span>
+<span class="fc" id="L30">                int prix = voiture.getPrix();</span>
+<span class="fc" id="L31">                double remise = prix * 0.05; // Calculer la remise</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">                if (remise &gt; 20000) {</span>
+<span class="fc" id="L33">                    remise = 20000;</span>
                 }
-<span class="fc" id="L25">                int newPrix = voitures.get(i).getPrix();</span>
-<span class="fc" id="L26">                System.out.println(newPrix);</span>
-
+<span class="fc" id="L35">                int remiseInt = (int) remise;</span>
+<span class="fc" id="L36">                voiture.setPrix(prix - remiseInt);</span>
             }
         }
-<span class="fc" id="L30">        return 0;</span>
-    }
-}
 
+<span class="fc" id="L40">        return voitures.get(voitures.size() - 1).getPrix();</span>
+    }
+
+}
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>
