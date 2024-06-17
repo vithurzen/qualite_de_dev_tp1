@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="vithurzen.ServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-16T16:07:00" hostname="LAPTOP-K9OT17MS" time="0.067">
+<testsuite name="vithurzen.ServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-16T16:16:55" hostname="LAPTOP-K9OT17MS" time="0.048">
   <properties/>
-  <testcase name="testService()" classname="vithurzen.ServiceTest" time="0.067"/>
+  <testcase name="testService()" classname="vithurzen.ServiceTest" time="0.048"/>
   <system-out><![CDATA[630000
 52250
 42750
